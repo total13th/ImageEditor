@@ -3,13 +3,16 @@
 if(isset($_FILES['image'])){
     $file = $_FILES['image']['tmp_name'];
 
+    $width = $_POST['width'];
+    $height = $_POST['height'];
+
     $ch = curl_init();
 
     $url = "http://localhost:5000/blur";
 
     $preFile = new CURLFile($file, $_FILES['image']['type'], $_FILES['image']['name']);
 
-    $data = array('image' => $preFile);
+    $data = array('image' => $preFile, 'width' => $width, 'height' => $height);
 
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_POST, 1);
