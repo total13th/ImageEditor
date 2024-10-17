@@ -25,8 +25,19 @@ if(isset($_FILES['image'])){
         echo '<img src="data:image/jpeg;base64,'. $imgData . '" alt="Processed Image">';
     }
     curl_close($ch);
+
 }else{
     echo "Error While uploading";
 }
-
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="func.js"></script>
+</head>
+<body>
+    <button onclick="goBack()">Back</button>
+</body>
+</html>
+
