@@ -5,15 +5,15 @@ if(isset($_FILES['image'])){
 
     $ch = curl_init();
 
-    $url = "http://loaclhost:5000/blur";
+    $url = "http://localhost:5000/blur";
 
     $preFile = new CURLFile($file, $_FILES['image']['type'], $_FILES['image']['name']);
 
     $data = array('image' => $preFile);
 
     curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLPOT_POST, 1);
-    curl_setopt($ch, CURLPOT_POSTFIELDS, $data);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
     $response = curl_exec($ch);
@@ -25,6 +25,8 @@ if(isset($_FILES['image'])){
         echo '<img src="data:image/jpeg;base64,'. $imgData . '" alt="Processed Image">';
     }
     curl_close($ch);
+}else{
+    echo "Error While uploading";
 }
 
 ?>

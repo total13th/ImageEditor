@@ -5,8 +5,8 @@
     <title>Image Editor</title>
 </head>
 <body>
-    <form action="trans.php" method="POST">
-        <label for="inputImage">Upload Image</label>
+    <form action="trans.php" method="POST" enctype="multipart/form-data">
+        <!--<label for="inputImage">Upload Image</label>-->
         <input type="file" name="image">
         <input type="submit" value="Process">
     </form>
