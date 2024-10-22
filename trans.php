@@ -21,8 +21,17 @@ if(isset($_FILES['image'])){
     if($response === false){
         echo "Error: ". curl_error($ch);
     }else{
+
+        // Create a unique filename to store the processed image
+        $processed_image_path = 'Blured Image' . time() . '.jpg';
+
+        // Save the processed image to the server
+        file_put_contents($processed_image_path, $response);
+
         $imgData = base64_encode($response);
         echo '<img src="data:image/jpeg;base64,'. $imgData . '" alt="Processed Image">';
+
+        echo '<a href="' . $processed_image_path . '" download="Blured Image.jpg">Download</a>';
     }
     curl_close($ch);
 
@@ -38,6 +47,7 @@ if(isset($_FILES['image'])){
 </head>
 <body>
     <button onclick="goBack()">Back</button>
+    <!---->
 </body>
 </html>
 
